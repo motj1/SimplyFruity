@@ -25,20 +25,20 @@
 		
 		<div class="sidebar">
 			<button onClick="changeImage('imga')">
-				<img src="../Images/Fruits/Lemon.png" alt="Lemon">
+				<img src="../Images/Fruits/lemon.png" alt="Lemon">
 			</button>
 			<button onClick="changeImage('vid')" style="margin-top: 5px;">
 				<img src="../Images/Dragonfruit.png" alt="Dragonfruit" style="border-radius: 15px;">
 			</button>
 		</div>
 		<div id="imge">
-			<img id="Image" src="../Images/Fruits/Lemon.png" alt="Lemon">
+			<img id="Image" src="../Images/Fruits/lemon.png" alt="Lemon">
 		</div>
 		
 		<script>
 		function changeImage(image) {
 		  if (image == 'imga'){
-		  	document.getElementById("imge").innerHTML = '<img id="Image" src="../Images/Fruits/Lemon.png" alt="Lemon">';
+		  	document.getElementById("imge").innerHTML = '<img id="Image" src="../Images/Fruits/lemon.png" alt="Lemon">';
 		  } else {
 			document.getElementById("imge").innerHTML = '<video width="500" height="500" autoplay loop controls muted>\n <source src="../Images/Dragonfurit.mp4" type="video/mp4">\n </video>';
 		  }
