@@ -14,7 +14,7 @@ function SaveItem() {
 	let max = document.forms.ShoppingList.max.value;
 	console.log(document.forms.ShoppingList.data.value);
 	if (document.forms.ShoppingList.data.value <= max && document.forms.ShoppingList.data.value != 0) {
-		localStorage.setItem(name, item);
+		sessionStorage.setItem(name, item);
 		alert ("Item saved navigate to the cart to see it.");
 	} else if (document.forms.ShoppingList.data.value == 0){
 		alert ("Please enter amount");
@@ -27,7 +27,7 @@ function countnum(name) {
 	var num = 0;
 	
 	for (let i = 0; i < 10; i ++){
-		if (localStorage.getItem(name+i) != null){
+		if (sessionStorage.getItem(name+i) != null){
 			num ++;
 		}
 	}
@@ -39,28 +39,28 @@ function SaveComment(){
 	let name = document.forms.ShoppingList.name.value + countnum(document.forms.ShoppingList.name.value);
 	let data = document.forms.ShoppingList.data.value;
 	
-	localStorage.setItem(name, data);
+	sessionStorage.setItem(name, data);
 }
 
 function RemoveItem() {
 	var name = document.forms.ShoppingList.name.value;
 
-	document.forms.ShoppingList.data.value = localStorage.removeItem(name);
+	document.forms.ShoppingList.data.value = sessionStorage.removeItem(name);
 }
 
 function ClearAll() {
-	localStorage.clear();
+	sessionStorage.clear();
 }
 
 function plus(i) {
 	let name = getContent(i);
-	let text = localStorage.getItem(name);
+	let text = sessionStorage.getItem(name);
 	var myArray = text.split("  ");
 	
 	if (parseInt(myArray[0], 10) < parseInt(myArray[2]), 10) {
 		myArray[0] = parseInt(myArray[0], 10) + 1;
 		let txt = myArray[0] + "  " + myArray[1] + "  " + myArray[2];
-		localStorage.setItem(name, txt);
+		sessionStorage.setItem(name, txt);
 	} else {
 		alert ("Too many items");
 		console.log(myArray[0], myArray[2]);
@@ -70,15 +70,15 @@ function plus(i) {
 
 function minus(i) {
 	let name = getContent(i);
-	let text = localStorage.getItem(name);
+	let text = sessionStorage.getItem(name);
 	var myArray = text.split("  ");
 	
 	if ((parseInt(myArray[0], 10)-1) > 0) {
 		myArray[0] = parseInt(myArray[0], 10) - 1;
 		let txt = myArray[0] + "  " + myArray[1] + "  " + myArray[2];
-		localStorage.setItem(name, txt);
+		sessionStorage.setItem(name, txt);
 	} else {
-		localStorage.removeItem(name);
+		sessionStorage.removeItem(name);
 	}
 	doShowAll();
 }
@@ -88,11 +88,11 @@ function doShowAll() {
 	var list = "<table class='cart'><tr><th><b>Item</b></th><th><b>Amount</b></th><th><b>Price ($)</b></th><th><b>Total ($)</b></th></tr>\n";
 	var i = 0;
 
-	for (i = 0; i <= localStorage.length-1; i++) {
+	for (i = 0; i <= sessionStorage.length-1; i++) {
 
-		key = localStorage.key(i);
+		key = sessionStorage.key(i);
 		
-		let text = localStorage.getItem(key);
+		let text = sessionStorage.getItem(key);
 		
 		let myArray = text.split("  ");
 		if (key === "Blood Orange"){
@@ -119,11 +119,11 @@ function makeForm() {
 	var prices = "";
 	var total = 0;
 
-	for (let i = 0; i <= localStorage.length-1; i++) {
+	for (let i = 0; i <= sessionStorage.length-1; i++) {
 
-		key = localStorage.key(i);
+		key = sessionStorage.key(i);
 		
-		let text = localStorage.getItem(key);
+		let text = sessionStorage.getItem(key);
 		
 		let myArray = text.split("  ");
 		items += key + ",";
